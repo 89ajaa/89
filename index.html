@@ -404,6 +404,18 @@
             let dist2 = 999999; if (office2 && office2.lat) dist2 = calculateDist(currentLoc.lat, currentLoc.lng, office2.lat, office2.lng);
             if (dist1 > office.rad && dist2 > (office2 ? office2.rad : 0)) return showToast("Gagal: Anda berada di luar area semua lokasi kantor!");
 
+            // JIKA ABSEN KELUAR (OUT), LANGSUNG KIRIM DATA TANPA BUKA KAMERA
+            if (type === 'OUT') {
+                openConfirmModal("Apakah Anda yakin ingin Absen Keluar sekarang?", function() {
+                    showToast("📤 Mengirim data Absen Keluar...");
+                    callAPI('submitAttendance', { type: type, lat: currentLoc.lat, lng: currentLoc.lng, userId: user.id, selfieData: null })
+                        .then(res => { showToast(res.message); if (res.success) refreshData(); })
+                        .catch(err => { showToast("Gagal kirim absen keluar"); });
+                });
+                return; // Hentikan eksekusi kode di bawahnya agar kamera tidak terbuka
+            }
+
+            // JIKA ABSEN MASUK (IN), BUKA KAMERA SEPERTI BIASA
             var input = document.getElementById('cameraInput'); input.value = '';
             input.onchange = function (e) {
                 if (!e.target.files || !e.target.files[0]) return;
