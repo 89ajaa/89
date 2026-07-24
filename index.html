@@ -224,6 +224,89 @@
                 </div>
             </div>
         </main>
+        
+        <!-- TAB: JADWAL (TAMPILAN PEGAWAI) -->
+        <main id="tab-jadwal" class="tab-content p-6 space-y-6 pb-24">
+            <h2 class="text-2xl font-black text-gray-900">Jadwal Pegawai</h2>
+            
+            <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden pb-6">
+                <!-- Wrapper dengan overflow-x-auto agar tabel bisa digeser di layar HP -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs min-w-[700px]">
+                        <thead>
+                            <!-- Header Baris 1: Pengelompokan -->
+                            <tr class="bg-slate-900 text-white text-[10px] uppercase tracking-wider text-center border-b border-slate-700">
+                                <th rowspan="2" class="py-3 px-3 font-bold border-r border-slate-700 align-middle text-left">Nama</th>
+                                <th colspan="2" class="py-2 px-3 font-bold border-r border-slate-700 bg-slate-800">Pagi</th>
+                                <th colspan="2" class="py-2 px-3 font-bold border-r border-slate-700 bg-slate-900">Jam Istirahat</th>
+                                <th colspan="2" class="py-2 px-3 font-bold bg-slate-800">Sore/Malam</th>
+                            </tr>
+                            <!-- Header Baris 2: Sub-kolom -->
+                            <tr class="bg-slate-900 text-white text-[9px] uppercase tracking-wider text-center">
+                                <th class="py-2 px-2 font-bold border-r border-slate-700 bg-slate-800">Jam Masuk</th>
+                                <th class="py-2 px-2 font-bold border-r border-slate-700 bg-slate-800">Jam Keluar</th>
+                                <th class="py-2 px-2 font-bold border-r border-slate-700 bg-slate-900">Mulai</th>
+                                <th class="py-2 px-2 font-bold border-r border-slate-700 bg-slate-900">Selesai</th>
+                                <th class="py-2 px-2 font-bold border-r border-slate-700 bg-slate-800">Jam Masuk</th>
+                                <th class="py-2 px-2 font-bold bg-slate-800">Jam Keluar</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center text-gray-600 font-medium">
+                            <!-- Baris 1: Gufron Pagi -->
+                            <tr class="bg-white border-b border-gray-100 hover:bg-indigo-50 transition-colors">
+                                <td class="py-3 px-3 font-bold text-gray-900 text-left">Gufron Pagi</td>
+                                <td class="py-3 px-2">07.00</td>
+                                <td class="py-3 px-2">16.00</td>
+                                <td class="py-3 px-2">11.30</td>
+                                <td class="py-3 px-2">13.00</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                            </tr>
+                            <!-- Baris 2: Gufron Malam -->
+                            <tr class="bg-gray-50 border-b border-gray-100 hover:bg-indigo-50 transition-colors">
+                                <td class="py-3 px-3 font-bold text-gray-900 text-left">Gufron Malam</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 font-bold text-indigo-600">16.00</td>
+                                <td class="py-3 px-2 font-bold text-red-500">22.00</td>
+                            </tr>
+                            <!-- Baris 3: Rangga Pagi -->
+                            <tr class="bg-white border-b border-gray-100 hover:bg-indigo-50 transition-colors">
+                                <td class="py-3 px-3 font-bold text-gray-900 text-left">Rangga Pagi</td>
+                                <td class="py-3 px-2">08.00</td>
+                                <td class="py-3 px-2">16.00</td>
+                                <td class="py-3 px-2">13.00</td>
+                                <td class="py-3 px-2">13.30</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                            </tr>
+                            <!-- Baris 4: Rangga Malam -->
+                            <tr class="bg-gray-50 border-b border-gray-100 hover:bg-indigo-50 transition-colors">
+                                <td class="py-3 px-3 font-bold text-gray-900 text-left">Rangga Malam</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 font-bold text-indigo-600">16.00</td>
+                                <td class="py-3 px-2 font-bold text-red-500">22.00</td>
+                            </tr>
+                            <!-- Baris 5: July -->
+                            <tr class="bg-white border-b border-gray-100 hover:bg-indigo-50 transition-colors">
+                                <td class="py-3 px-3 font-bold text-gray-900 text-left">July</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 text-gray-400">-</td>
+                                <td class="py-3 px-2 font-bold text-indigo-600">16.00</td>
+                                <td class="py-3 px-2 font-bold text-red-500">22.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
 
         <!-- Navigasi Bawah -->
         <nav class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-xl border-t px-3 py-3 flex justify-around items-center z-[100]">
@@ -232,6 +315,7 @@
             <button onclick="switchTab('pegawai')" id="nav-pegawai" class="hidden flex flex-col items-center gap-1 text-gray-400 transition-all"><i class="fas fa-users text-lg"></i><span class="text-[8px] font-bold uppercase">Pegawai</span></button>
             <button onclick="switchTab('log')" id="nav-log" class="hidden flex flex-col items-center gap-1 text-gray-400 transition-all"><i class="fas fa-clock-rotate-left text-lg"></i><span class="text-[8px] font-bold uppercase">Log</span></button>
             <button onclick="switchTab('izin')" id="nav-izin" class="hidden flex flex-col items-center gap-1 text-gray-400 transition-all"><i class="fas fa-envelope-open-text text-lg"></i><span class="text-[8px] font-bold uppercase">Izin</span></button>
+            <button onclick="switchTab('jadwal')" id="nav-jadwal" class="flex flex-col items-center gap-1 text-gray-400 transition-all"><i class="fas fa-calendar-alt text-lg"></i><span class="text-[8px] font-bold uppercase">Jadwal</span></button>
             <button onclick="handleLogout()" class="flex flex-col items-center gap-1 text-red-400"><i class="fas fa-power-off text-lg"></i><span class="text-[8px] font-bold uppercase">Keluar</span></button>
         </nav>
     </div>
