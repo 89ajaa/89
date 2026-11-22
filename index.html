@@ -355,7 +355,7 @@
         // ==========================================
         // WAJIB DIUBAH: GANTI DENGAN URL WEB APP ANDA
         // ==========================================
-        const API_URL = "https://script.google.com/macros/s/AKfycbxTG6FeTkMlL3Lxfb_Nf_JTa5MU8XylI3H6I-DkgtUrsAsG20v1Q7psnHdxWxyWzGI3/exec";
+        const API_URL = "https://script.google.com/macros/s/AKfycbxV8P7oYYe5Oyd1KDZ8WkCs-slK_pmPol1tPQbbByvwLAd1Qf1O0r1Rl6Z2NJI5e1In/exec";
 
         /** Fungsi Utama untuk komunikasi dengan backend */
         async function callAPI(action, payload = {}) {
@@ -458,8 +458,15 @@
             document.getElementById('adminAbsenceLog').innerHTML = '<tr><td colspan="9" class="py-8 text-center text-gray-400 text-xs"><i class="fas fa-spinner fa-spin mr-2"></i> Memuat data...</td></tr>';
             const month = document.getElementById('filterBulan').value; const date = document.getElementById('filterTanggal').value;
             callAPI('getAttendanceLog', { page: logPage, limit: 25, monthStr: month, dateStr: date })
-                .then(res => { allLogData = res.data || []; logTotalPages = res.totalPages || 1; logTotal = res.total || 0; renderLogTable(allLogData); updateLogPager(); })
-                .catch(err => { document.getElementById('adminAbsenceLog').innerHTML = '<tr><td colspan="9" class="py-8 text-center text-red-400 text-xs">Gagal memuat log absensi</td></tr>'; });
+                .then(res => {
+                    if (!res || res.success === false || res.error || !Array.isArray(res.data)) {
+                        const message = (res && (res.message || res.error)) ? (res.message || res.error) : 'API riwayat tidak mengembalikan data yang valid. Pastikan Apps Script sudah di-deploy ke versi terbaru.';
+                        document.getElementById('adminAbsenceLog').innerHTML = `<tr><td colspan="9" class="py-8 text-center text-red-400 text-xs">${message}</td></tr>`;
+                        allLogData = []; logTotal = 0; logTotalPages = 1; updateLogPager(); return;
+                    }
+                    allLogData = res.data; logTotalPages = res.totalPages || 1; logTotal = res.total || 0; renderLogTable(allLogData); updateLogPager();
+                })
+                .catch(err => { document.getElementById('adminAbsenceLog').innerHTML = '<tr><td colspan="9" class="py-8 text-center text-red-400 text-xs">Gagal memuat log absensi: ' + (err && err.message ? err.message : err) + '</td></tr>'; });
         }
         function changeLogPage(delta) { loadAttendanceLog(logPage + delta); }
         function updateLogPager() {
